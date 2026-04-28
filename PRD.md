@@ -76,6 +76,16 @@ date: 2026-04-28T14:30:00
 
 ---
 
+## Architecture Principles
+
+- **Deep modules** — each module exposes a minimal interface while hiding maximum complexity behind it
+- `useNotes()` is the primary deep module: components call `createNote`, `saveNote`, `deleteNote`, `searchNotes` and receive a reactive notes list — all File System Access API calls, polling, frontmatter parsing, and trash logic are internal
+- Components never interact with the filesystem directly
+- **Markdown rendering**: `markdown-it`
+- **State management**: Vue composables (no Pinia)
+
+---
+
 ## Out of Scope (v1)
 
 - Images / local file embeds
@@ -89,6 +99,4 @@ date: 2026-04-28T14:30:00
 
 ## Open Questions
 
-- **Markdown rendering library**: `marked` vs `markdown-it` — recommend `markdown-it` for its plugin ecosystem if extensions (tables, footnotes) are added later
-- **State management**: Pinia vs local Vue composables — composables likely sufficient for v1
 - **Polling interval**: 3–5 seconds is a reasonable default; could be user-configurable later

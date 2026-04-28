@@ -76,6 +76,14 @@ date: 2026-04-28T14:30:00
 
 ---
 
+## Development Methodology
+
+- **Red/green TDD** — write a failing test first, then write the minimum code to pass it
+- Tests are written before implementation for all composables and utility logic
+- Deep modules make this natural: test the interface, not the internals
+
+---
+
 ## Architecture Principles
 
 - **Deep modules** — each module exposes a minimal interface while hiding maximum complexity behind it
